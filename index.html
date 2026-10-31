@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>DRAWING APOCALYPSE</title>
+<meta name="description" content="DRAW. LEARN. EVOLVE. SURVIVE.">
+<meta name="theme-color" content="#07030b">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Apocalypse">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+<div id="app">
+  <div id="bg" aria-hidden="true"><div class="nebula n1"></div><div class="nebula n2"></div><canvas id="embers"></canvas><div class="vignette"></div></div>
+  <main id="screens"></main>
+  <nav id="tabbar" aria-label="Main">
+    <button data-act="nav" data-tab="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg><span>HOME</span></button>
+    <button data-act="nav" data-tab="drawing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c2.5 0 4-1.2 4.4-3.3L17.8 7.3a2 2 0 0 0-2.8-2.8L5.6 13.9C3.5 14.3 4 17.5 4 20Z"/><path d="m13.5 6 4.5 4.5"/></svg><span>DRAWING</span></button>
+    <button data-act="nav" data-tab="survival" class="tab-surv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg><span>SURVIVAL</span></button>
+    <button data-act="nav" data-tab="create"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7"/></svg><span>CREATE</span><i class="tab-lock"></i></button>
+    <button data-act="nav" data-tab="vault"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="12" cy="12" r="3.5"/><path d="M12 8.5V7M15.5 12H17M12 15.5V17M8.5 12H7"/></svg><span>VAULT</span></button>
+  </nav>
+  <div id="subtitles" aria-live="polite"><span class="sub-name">ORB</span><span class="sub-text"></span></div>
+  <div id="toasts" aria-live="polite"></div>
+  <div id="sheet-root"></div>
+  <div id="onboarding"></div>
+  <div id="rotate-portrait" class="rotate"><div class="rot-ic"></div><b>Turn your phone upright</b><span>This section is designed for portrait.</span></div>
+  <div id="rotate-landscape" class="rotate"><div class="rot-ic land"></div><b>Rotate your phone</b><span>SURVIVAL plays in landscape.</span><button class="btn sm ghost" data-act="exit-survival">Exit Survival</button></div>
+  <noscript><div class="nojs">DRAWING APOCALYPSE needs JavaScript enabled.</div></noscript>
+</div>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "note": "Tutorial library manifest. The DRAWING screen loads this file at runtime, so lessons can be added or changed without rebuilding the app. In Phase 2 this will be served by a CMS / backend; `video` must point to a real hosted video (HLS/MP4) and `reference` to finished artwork.",
+  "tutorials": [
+    {
+      "id": "fire-wyvern",
+      "title": "FIRE WYVERN",
+      "category": "dragons",
+      "difficulty": "Intermediate",
+      "durationMinutes": null,
+      "video": null,
+      "reference": null,
+      "subtitles": null,
+      "steps": [
+        "Basic construction",
+        "Head and skull",
+        "Neck",
+        "Body structure",
+        "Wings",
+        "Arms and legs",
+        "Tail",
+        "Horns and spikes",
+        "Facial details",
+        "Scales",
+        "Shading",
+        "Fire effects and final details"
+      ]
+    }
+  ]
+}
