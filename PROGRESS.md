@@ -2,6 +2,41 @@
 
 Workflow (spec §24): BUILD → PLAY → IDENTIFY ONE PROBLEM → DIRECT A FIX → PLAY AGAIN → LOCK IT → NEXT SYSTEM.
 
+## Phase 2 — status: BUILT, headless-tested (Chromium), awaiting on-device test · sw.js v0.2.0
+Build order per Ty's FINAL master blueprint (design-ref/FINAL-BLUEPRINT-NOTES.md, 2026-10-31): P1 foundation · **P2 core screens** · P3 PLAYABLE SURVIVAL · P4 ORB · P5 learning system · P6 progression/creator · P7 other modes one at a time · P8 polish/testing.
+
+### Done in Phase 2
+- **DRAWING** (design sheet screen 5): left category rail (ALL + 10 categories), featured card, 2-column lesson grid, search, difficulty filter (Beginner/Intermediate/Advanced/Expert), favorites filter, footer "MASTER THE ART. WATCH. LEARN. EVOLVE.".
+  - 40 lessons in `content/tutorials.json` (schema 2, 4 per category, one per difficulty), all with real written steps.
+  - FEATURED: **FIRE WYVERN**, 12 steps; the reference image is the drawing at **step 5 of 12** (wings blocked in).
+  - Thumbnails: original SVG construction sketches generated in code (`da-tools/gen_thumbs.py`), one per lesson, related to the lesson subject. They are simple line sketches, not finished artwork.
+  - Lesson page: honest "Video not uploaded yet" panel when there's no video (39 of 40 lessons). Step card (step N of M, prev/next, dots, ORB reads the step aloud with subtitles), full step list, favorite, completion.
+  - Real HTML5 player when a lesson has video (`js/player.js`): play/pause, seek, time, volume, mute, captions on/off (WebVTT), speed 0.5–1.5×, fullscreen (iPhone uses native video fullscreen), previous/next step jumps (`stepTimes`), step panel follows the video, resume position. The only video is the 50-second "Sphere of Light" DEMO ANIMATION (generated in code, labeled in-app as demo animation, not tutorial footage).
+  - Progress per lesson saved in `profile.tutorials` (step, studied steps, video position). Completion needs every step studied (4 s dwell or played through). XP once per lesson (`lesson:<id>`), daily "Complete a drawing lesson" live, achievement "First Lesson" live.
+- **HOME**: Continue Last Activity resumes the exact lesson (or vault tab / survival mode); DRAWING tile shows real lessons-done count.
+- **SURVIVAL** (screen 2): 6-mode list with honest status (Zombie Infection = next up, first playable in P3; Multiplayer = needs a server; others planned P7). CONFIRM opens the landscape preview; Exit returns to the list. No mode is playable.
+- **CREATE**: locked view with real XP progress to level 5; unlocked view at level 5 (by real XP; screenshot used test-injected XP). The full creator is P6.
+- **VAULT** (screen 7): tabs Characters / Elements / Weapons / Stories / Records / Achievements; collection progress computed from real unlocks; the 7 official characters shown locked; Records = completed / in-progress lessons, favorites, survival records (none), full reward & unlock history.
+- **SETTINGS** (screen 10): profile card (UID, Edit) + drill-down list. Master / music / SFX / ORB voice volume, subtitles, reduced motion, aim + camera sensitivity, touch layout + button size, graphics, reset settings with confirm, delete profile with confirm. All persisted.
+- **Gamepad menu navigation** (`js/gamepad.js`, standard mapping): D-pad/left stick moves focus, A activates, B back, LB/RB switch tabs. Tested only with a simulated pad in headless Chromium, not a real PS/Xbox/Backbone controller.
+- **18+ section: NOT built (held).** If built later it must be gated in Settings, never a primary tab, labeled "ORB After Dark (18+)" or "18+ ORB". The name "Ink Orb" is never used.
+
+### Known gaps / limitations (Phase 2)
+- 39 of 40 lessons have no video. Durations are not shown for them (no fake stats).
+- Coins/currency from the design sheet are not shown: no currency system exists.
+- ORB guide screen (sheet 9) restyle not done; the Ask ORB sheet is unchanged.
+- Lesson XP for repeated completions: none (once per lesson by design). The daily lesson challenge needs a lesson not completed before.
+- `tutorials.json` updates reach installed phones on the second launch (cache-first + background refresh).
+- Not tested on a real iPhone/Android, with a real controller, or in Safari/WebKit.
+
+## Direction for later phases (recorded from Ty, binding)
+- **Shooter art style**: 3D realistic — realistic characters, ruined city and corridor environments, fire, smoke, dramatic lighting.
+- **Gameplay feel like Call of Duty Mobile**: twin-thumb controls (left move stick, right drag-to-aim), large fire button, ADS, crouch/jump/reload, minimap, killfeed, loadouts, polished edge HUD — all in our own art, colors and branding. **Never copy COD assets or branding.**
+- **Graphics like COD Mobile**: PBR materials, dynamic lighting, post-processing (bloom, fog), polished HUD and menus.
+- **Wireless controllers** (Gamepad API: PS / Xbox / Backbone): standard mapping, remappable buttons, aim assist, on-screen button prompts, touch controls auto-hide when a pad connects. Only claimed after testing.
+- **Survival HUD references** (`design-ref/survival-hud*.jpg`) are for the shooter phases. ⚠ The mockups use **cyan/blue** HUD accents; our UI stays **pink/purple** with white text, so the HUD will be recolored.
+- **Phase 3 = PLAYABLE SURVIVAL** (next): ruined city at night, human survivor with a pistol, move/aim/shoot/reload, health/ammo/damage, zombies spawn/chase/attack/die, survive 60 s or reach extraction, win/lose/restart/results. Controls: WASD/arrows + mouse + click + R + Esc on desktop; move stick + aim area + shoot + reload + pause with multitouch on phones.
+
 ## Phase 1 — status: BUILT, headless-tested, awaiting on-device play test
 
 ### Completed systems
@@ -85,7 +120,7 @@ Workflow (spec §24): BUILD → PLAY → IDENTIFY ONE PROBLEM → DIRECT A FIX �
 - **Testing gaps**: tested in headless Chromium (SwiftShader WebGL) only. Real-device frame rate, battery use and voice selection on iPhone 16 Pro Max and Android are not verified yet. Use Settings → Graphics quality → Medium/Low if ORB runs hot.
 - **Weekly challenges and special events** are defined in config, but hidden because every one depends on later-phase systems.
 
-## Unfinished systems by phase
+## Unfinished systems by phase (Phase 1 era list — superseded by the build order above)
 - **Phase 2, DRAWING**:
   - Tutorial videos and finished reference art.
   - Video player: play, pause, rewind, fast-forward, replay, speed, volume, subtitles, narration, fullscreen, previous/next step, resume.

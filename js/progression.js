@@ -195,3 +195,23 @@ export function checkAchievements() {
     }
   } finally { checking = false; }
 }
+
+// ---- drawing lessons (Phase 2) ---------------------------------------------
+export const LESSON_XP = { Beginner: 40, Intermediate: 60, Advanced: 80, Expert: 100 };
+/** Completes a lesson once. XP id `lesson:<id>` can never be paid twice. */
+export function completeLesson(t) {
+  const p = P();
+  if (!p || p.tutorials?.[t.id]?.completedAt) return false;
+  const wasDone = challengeState(DAILY_CHALLENGES.find((c) => c.id === 'draw-lesson')).done;
+  Store.updateProfile((pp) => {
+    pp.tutorials ||= {};
+    const r = (pp.tutorials[t.id] ||= { step: 0, seen: [], pos: 0, startedAt: Date.now() });
+    r.completedAt = Date.now();
+    pp.stats.tutorialsCompleted += 1;
+    pp.daily.lessons = (pp.daily.lessons || 0) + 1;
+    notify(pp, 'unlock', `Lesson complete: ${t.title}`, `+${LESSON_XP[t.difficulty] || 40} XP`);
+  }, { silent: true });
+  const ok = award(`lesson:${t.id}`, LESSON_XP[t.difficulty] || 40, `Lesson: ${t.title}`);
+  afterActivity('draw-lesson', wasDone);
+  return ok;
+}

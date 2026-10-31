@@ -41,6 +41,7 @@ export const DEFAULT_SETTINGS = {
   reduceMotion: false, highContrast: false, largeText: false,
   notifyAchievements: true, notifyChallenges: true, notifyUnlocks: true,
   shareAnalytics: false,
+  lessonVolume: 1, lessonCaptions: true, lessonRate: 1,
 };
 
 export function todayKey(d = new Date()) {
@@ -59,7 +60,9 @@ export function newProfile(username) {
     ledger: [],          // [{id, xp, src, at}] — single source of truth for XP
     achievements: {},    // id -> unlockedAt
     notifications: [],   // [{id, kind, title, body, at, read}]
-    bookmarks: [],       // tutorial ids
+    bookmarks: [],       // tutorial ids (favorites)
+    tutorials: {},       // id -> {step, seen:[], pos, startedAt, updatedAt, completedAt}
+    lastActivity: null,  // {to, tab, tut, label, at} — powers Continue Last Activity on HOME
     lore: [],
     stats: {
       orbTalks: 0, questions: 0, elementsViewed: 0, dailyDone: 0,
@@ -112,11 +115,11 @@ class StoreImpl extends EventTarget {
     this.profile = null;
     this.emit('account');
   }
-  updateProfile(mutator) {
+  updateProfile(mutator, { silent = false } = {}) {
     mutator(this.profile);
     this.profile.integrity = hashLedger(this.profile.ledger);
     this.scheduleSave();
-    this.emit('change');
+    if (!silent) this.emit('change');
   }
   setSetting(key, value) {
     this.settings[key] = value;

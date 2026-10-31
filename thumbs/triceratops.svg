@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+<defs><radialGradient id="bg" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#2a1030"/><stop offset=".6" stop-color="#120814"/><stop offset="1" stop-color="#07040a"/></radialGradient>
+<radialGradient id="gl" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="#ff5a3c" stop-opacity=".28"/><stop offset="1" stop-color="#ff5a3c" stop-opacity="0"/></radialGradient>
+<filter id="glow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity=".035"/></pattern></defs>
+<rect width="320" height="200" fill="url(#bg)"/><rect width="320" height="200" fill="url(#grid)"/><rect width="320" height="200" fill="url(#gl)"/>
+<g filter="url(#glow)"><ellipse cx="160" cy="112" rx="56" ry="32" fill="none" stroke="#8d7f9e" stroke-width="1.2" opacity="0.8" stroke-dasharray="4 4"/><path d="M90 120 C100 90 130 80 170 80 C200 80 222 96 228 120 L216 150 M110 136 L106 162 M190 140 L194 164 M150 142 L150 164 M90 120 L60 126 L78 110 L66 94 L100 96 Z" fill="none" stroke="#f4e9f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="1" /><path d="M84 98 L52 80 M98 94 L80 70 M62 120 L46 116" fill="none" stroke="#ff5a3c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="1" /></g></svg>

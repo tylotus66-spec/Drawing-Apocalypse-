@@ -25,7 +25,7 @@ function draw() {
   const hasProfile = Store.hasAccount();
   let body = '';
   if (step === 0) {
-    body = `<div class="ob-title"><h1 class="logo">DRAWING<br><span>APOCALYPSE</span></h1><div class="tagline">DRAW. LEARN. EVOLVE. SURVIVE.</div></div>
+    body = `<div class="ob-title"><img class="logo-full" src="./img/logo-orb.webp" alt="DRAWING APOCALYPSE" width="1000" height="801"><div class="tagline">DRAW. LEARN. EVOLVE. <span>SURVIVE.</span></div></div>
       <button class="btn pink big" data-ob="awaken">AWAKEN ORB</button>
       <div class="muted small">Sound on for ORB’s voice · subtitles always shown</div>`;
   } else if (step === 1) {
@@ -46,8 +46,8 @@ function draw() {
       <p class="ob-line">Your journey begins. Complete daily challenges to grow stronger. At level five, the creator awakens.</p>
       <div class="xp-burst">+${REWARDS.onboarding.xp} XP</div><button class="btn pink big" data-ob="enter">Enter HOME</button></div>`;
   }
-  root.innerHTML = `<div class="ob-bg"></div><div class="ob-inner"><div class="orb-slot orb-slot-ob" id="ob-orb"></div>${body}</div>`;
-  Orb.mount(root.querySelector('#ob-orb'));
+  root.innerHTML = `<div class="ob-bg"></div><div class="ob-inner">${step === 0 ? '' : '<div class="orb-slot orb-slot-ob" id="ob-orb"></div>'}${body}</div>`;
+  if (step !== 0) Orb.mount(root.querySelector('#ob-orb'));
   if (step === 1) {
     if (hasProfile) { step = 2; return draw(); }
     const form = root.querySelector('#ob-name');

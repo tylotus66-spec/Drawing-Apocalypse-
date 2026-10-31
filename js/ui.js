@@ -24,6 +24,10 @@ export const ICONS = {
   rotate: sv('<rect x="7" y="2.5" width="10" height="19" rx="2" transform="rotate(90 12 12)"/><path d="M4 6a8 8 0 0 1 6-3.5M20 18a8 8 0 0 1-6 3.5"/>'),
   exit: sv('<path d="M15 4h4v16h-4"/><path d="M10 16l-4-4 4-4M6 12h10"/>'),
   upload: sv('<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/>'),
+  heart: sv('<path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20Z"/>'),
+  search: sv('<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>'),
+  voice: sv('<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4Z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>'),
+  trophy: sv('<path d="M7 4h10v5a5 5 0 0 1-10 0Z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8 21h8M9 18h6"/>'),
   download: sv('<path d="M12 4v12M7 11l5 5 5-5"/><path d="M4 20h16"/>'),
 };
 
@@ -89,10 +93,11 @@ export function confirmDialog(title, body, okLabel = 'Confirm') {
   });
 }
 
-export function avatarHTML(profile, size = 44) {
-  if (profile?.avatar) return `<img class="avatar" src="${esc(profile.avatar)}" alt="" style="width:${size}px;height:${size}px">`;
+export function avatarHTML(profile, size = 44, shape = '') {
+  const cls = shape === 'sq' ? ' avatar-sq' : '';
+  if (profile?.avatar) return `<img class="avatar${cls}" src="${esc(profile.avatar)}" alt="" style="width:${size}px;height:${size}px">`;
   const ch = esc((profile?.username || '?').slice(0, 1).toUpperCase());
-  return `<span class="avatar avatar-sigil" style="width:${size}px;height:${size}px;font-size:${Math.round(size * 0.45)}px">${ch}</span>`;
+  return `<span class="avatar avatar-sigil${cls}" style="width:${size}px;height:${size}px;font-size:${Math.round(size * 0.45)}px">${ch}</span>`;
 }
 
 export function bar(pct, cls = '') {

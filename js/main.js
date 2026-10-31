@@ -15,6 +15,7 @@ import * as Create from './screens/create.js';
 import * as Vault from './screens/vault.js';
 import * as Settings from './screens/settings.js';
 import { startOnboarding } from './screens/onboarding.js';
+import { startGamepadNav } from './gamepad.js';
 
 const SCREENS = { home: Home, drawing: Drawing, survival: Survival, create: Create, vault: Vault, settings: Settings };
 const TABS = ['home', 'drawing', 'survival', 'create', 'vault'];
@@ -29,7 +30,7 @@ function mountOrb(root) {
 }
 setRemount(() => mountOrb());
 
-function show(name, { anim = true } = {}) {
+function show(name, { anim = true, restore = false } = {}) {
   if (!SCREENS[name] || !Store.profile) return;
   const mod = SCREENS[name];
   const host = $('#screens');
@@ -50,12 +51,12 @@ function show(name, { anim = true } = {}) {
     else old.remove();
   }
   current = name;
-  if (TABS.includes(name) && name !== 'survival') lastTab = name;
+  if (TABS.includes(name)) lastTab = name;
   document.body.dataset.screen = name;
   document.querySelectorAll('#tabbar [data-tab]').forEach((b) => { const on = b.dataset.tab === name; b.classList.toggle('on', on); b.setAttribute('aria-current', on ? 'page' : 'false'); });
   embers?.setIntensity(name === 'home' ? 1 : 0.45);
   mountOrb(sec);
-  if (TABS.includes(name)) recordVisit(name);
+  if (TABS.includes(name)) { recordVisit(name); if (!restore) recordActivity(name); } // a cold start must not overwrite the real last activity
   updateTabBadges();
 }
 
@@ -85,7 +86,7 @@ function navigate(name, opts = {}) {
   if (name === current && !opts.force) { rerender(); return; }
   play('nav');
   if (current === 'survival' && name !== 'survival') Survival.exitSurvival();
-  if (name === 'survival') Survival.enterSurvival(); // called inside the tap gesture
+  if (current === 'drawing' && name !== 'drawing') Drawing.leaveDrawing();
   stopSpeaking();
   show(name);
   if (location.hash !== '#/' + name) history.replaceState(null, '', '#/' + name);
@@ -97,15 +98,31 @@ onAction('go', (el) => {
   const to = el.dataset.to;
   if (to === 'drawing') { Drawing.resetDrawingView(); if (el.dataset.tut) Drawing.openTutorial(el.dataset.tut); }
   if (to === 'vault' && el.dataset.tab) Vault.setVaultTab(el.dataset.tab);
+  if (to === 'settings') Settings.openSection(el.dataset.sec || null);
   closeSheet(true);
   navigate(to, { force: true });
-  if (el.dataset.sec) setTimeout(() => document.getElementById('set-' + el.dataset.sec)?.scrollIntoView({ block: 'start' }), 350);
 });
 onAction('back', () => {
-  if (current === 'drawing' && Drawing.drawingDepth()) { Drawing.drawingBack(); play('nav'); rerender(); return; }
-  navigate(lastTab || 'home');
+  if (current === 'drawing' && Drawing.drawingDepth()) { Drawing.drawingBack(); play('nav'); rerender(); recordActivity('drawing'); return; }
+  if (current === 'settings' && Settings.sectionOpen()) { Settings.closeSection(); play('nav'); rerender(); return; }
+  if (current === 'settings') { navigate(lastTab || 'home'); return; }
+  if (current === 'survival' && Survival.inArena()) { Survival.exitSurvival().then(() => { rerender(); recordActivity('survival'); }); return; }
+  navigate('home');
 });
-onAction('exit-survival', async () => { await Survival.exitSurvival(); navigate(lastTab || 'home'); });
+
+// Continue Last Activity: remember the last real place the player was (silent, no re-render).
+const VAULT_TABS = { elements: 'Elements', achievements: 'Achievements', characters: 'Characters', drawing: 'Drawing', weapons: 'Weapons', collectibles: 'Collectibles' };
+export function recordActivity(name) {
+  if (!Store.profile || !['drawing', 'survival', 'create', 'vault'].includes(name)) return;
+  let a = { to: name, at: Date.now(), label: name.toUpperCase() };
+  if (name === 'vault') { const t = Vault.getVaultTab(); a.tab = t; a.label = 'VAULT'; a.detail = VAULT_TABS[t] || ''; }
+  if (name === 'drawing') { const v = Drawing.drawingContext(); a.label = 'DRAWING'; a.detail = v.label; if (v.tut) a.tut = v.tut; }
+  if (name === 'survival') { const m = Survival.selectedMode(); a.detail = m ? `Mode: ${m.name}` : 'Mode select'; }
+  if (name === 'create') a.detail = Store.profile && levelInfo().level >= 5 ? 'Creator unlocked' : 'Level 5 unlock progress';
+  Store.updateProfile((p) => { p.lastActivity = a; }, { silent: true });
+}
+document.addEventListener('activity', () => recordActivity(current));
+onAction('exit-survival', async () => { await Survival.exitSurvival(); if (current === 'survival') rerender(); else navigate('survival'); });
 onAction('orb-tap', () => {
   unlockAudio(); Orb.pulse();
   const tip = tapOrb(current || 'home');
@@ -196,6 +213,7 @@ async function boot() {
   await Store.init();
   applySettings();
   embers = startEmbers($('#embers'));
+  startGamepadNav();
   await Drawing.loadLibrary();
   // first gesture anywhere unlocks audio (iOS requirement)
   window.addEventListener('pointerdown', () => unlockAudio(), { once: true, capture: true });
@@ -205,7 +223,7 @@ async function boot() {
     rolloverIfNeeded();
     checkAchievements();
     const start = location.hash.replace('#/', '');
-    show(SCREENS[start] && start !== 'survival' && start !== 'settings' ? start : 'home', { anim: false });
+    show(SCREENS[start] && start !== 'settings' ? start : 'home', { anim: false, restore: true });
   }
   setInterval(() => { if (rolloverIfNeeded() || current === 'home') rerender(); }, 60000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) rolloverIfNeeded(); });

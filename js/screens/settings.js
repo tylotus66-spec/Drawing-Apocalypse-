@@ -1,4 +1,5 @@
 import { Store, DEFAULT_SETTINGS } from '../store.js';
+import { levelInfo } from '../progression.js';
 import { APP_VERSION, CURRENT_PHASE } from '../config.js';
 import { esc, ICONS, onAction, toast, confirmDialog, avatarHTML, fileToAvatar } from '../ui.js';
 import { play } from '../audio.js';
@@ -18,12 +19,24 @@ function padsHTML() {
   return pads.length ? pads.map((g) => `<div class="tag ok">${esc(g.id.slice(0, 40))} · ${g.buttons.length} buttons</div>`).join('') : '<div class="muted small">No controller detected. Pair one in your phone’s Bluetooth settings, then press any button.</div>';
 }
 
+const SECTIONS = [['account', 'Account', 'user'], ['audio', 'Audio & ORB voice', 'voice'], ['display', 'Graphics & display', 'monitor'], ['controls', 'Controls', 'pad'], ['accessibility', 'Accessibility', 'eye'], ['notifications', 'Notifications', 'bell'], ['privacy', 'Privacy & data', 'lock']];
+const si = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const SIC = { user: si('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'), voice: ICONS.voice, monitor: si('<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'), pad: si('<path d="M6 8h12a4 4 0 0 1 3.8 5.2l-1.2 3.6a2.2 2.2 0 0 1-3.8.6L15 15H9l-1.8 2.4a2.2 2.2 0 0 1-3.8-.6l-1.2-3.6A4 4 0 0 1 6 8Z"/><path d="M8 10v3M6.5 11.5h3M15.5 11h.01M17.5 12.5h.01"/>'), eye: si('<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>'), bell: ICONS.bell, lock: ICONS.lock };
+let sec = null;
+export function openSection(id) { sec = SECTIONS.some((x) => x[0] === id) ? id : null; }
+export function sectionOpen() { return !!sec; }
+export function closeSection() { sec = null; }
+const uid = (p) => 'DA-' + p.id.replace('local-', '').slice(-8).toUpperCase();
+
 export function render() {
   const p = Store.profile;
   const voices = voiceSupported() ? listVoices() : [];
   const auto = pickVoice();
-  return `${sectionHeader('SETTINGS', 'Saved on this device', { back: true })}
-  <nav class="set-nav">${['account', 'audio', 'display', 'controls', 'accessibility', 'notifications', 'privacy'].map((s) => `<button class="chip" data-act="set-jump" data-id="${s}">${s[0].toUpperCase() + s.slice(1)}</button>`).join('')}</nav>
+  const secName = sec && SECTIONS.find((x) => x[0] === sec)?.[1];
+  return `${sectionHeader(sec ? secName.toUpperCase() : 'SETTINGS', 'Saved on this device', { back: true })}
+  ${sec ? '' : `<section class="set-profile glass">${avatarHTML(p, 76, 'sq')}<div class="grow"><b>${esc(p.username)}</b><div class="muted small">LEVEL ${levelInfo().level} · ${esc(p.title || 'Survivor')}</div><div class="muted small">UID: ${esc(uid(p))}</div></div><button class="btn sm ghost" data-act="set-open" data-id="account">Edit</button></section>
+  <nav class="set-list">${SECTIONS.map(([id, n, ic]) => `<button class="set-li glass" data-act="set-open" data-id="${id}"><span class="set-ic">${SIC[ic]}</span><b class="grow">${n}</b><span class="chev">${ICONS.back}</span></button>`).join('')}</nav>`}
+  <div class="set-body" ${sec ? `data-sec="${sec}"` : 'hidden'}>
 
   <section class="card glass" id="set-account"><h3>Account</h3>
     <div class="row gap">${avatarHTML(p, 64)}<div class="grow"><b>${esc(p.username)}</b><div class="muted small">Local profile · ${esc(p.id)}</div></div></div>
@@ -82,6 +95,7 @@ export function render() {
     <p class="muted small">This build sends nothing anywhere: no analytics, no tracking, no account server. Your profile, progress and settings are stored only in this browser on this phone.</p>
     <div class="row gap wrap"><button class="btn sm ghost" data-act="reset-settings">Reset settings</button><button class="btn sm danger" data-act="delete-profile">Delete profile & progress</button></div>
   </section>
+  </div>
   <p class="foot muted small">DRAWING APOCALYPSE ${APP_VERSION} · Phase ${CURRENT_PHASE}</p>`;
 }
 
@@ -116,7 +130,7 @@ export function bind(root) {
   });
 }
 
-onAction('set-jump', (el) => document.getElementById('set-' + el.dataset.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+onAction('set-open', (el) => { openSection(el.dataset.id); play('nav'); document.dispatchEvent(new Event('rerender')); setTimeout(() => document.querySelector('.screen.active .screen-scroll')?.scrollTo(0, 0), 30); });
 onAction('avatar-clear', () => { Store.updateProfile((p) => { p.avatar = null; }); play('tap'); });
 onAction('test-voice', () => say('I am ORB, the Eternal Guide. This is how I sound.'));
 onAction('export-save', () => {

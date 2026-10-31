@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+<defs><radialGradient id="bg" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#2a1030"/><stop offset=".6" stop-color="#120814"/><stop offset="1" stop-color="#07040a"/></radialGradient>
+<radialGradient id="gl" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="#b84dff" stop-opacity=".28"/><stop offset="1" stop-color="#b84dff" stop-opacity="0"/></radialGradient>
+<filter id="glow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity=".035"/></pattern></defs>
+<rect width="320" height="200" fill="url(#bg)"/><rect width="320" height="200" fill="url(#grid)"/><rect width="320" height="200" fill="url(#gl)"/>
+<g filter="url(#glow)"><path d="M120 60 m-14 0 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 M120 74 L116 130 L100 186 M116 130 L134 186 M118 86 L160 96 L190 92 M118 90 L156 108 L186 110" fill="none" stroke="#f4e9f2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="1" /><ellipse cx="124" cy="58" rx="3" ry="3" fill="#b84dff" stroke="#b84dff" stroke-width="2" opacity="1" /><path d="M30 190 C120 180 220 194 300 186" fill="none" stroke="#8d7f9e" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" /></g></svg>

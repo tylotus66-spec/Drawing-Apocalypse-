@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+<defs><radialGradient id="bg" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#2a1030"/><stop offset=".6" stop-color="#120814"/><stop offset="1" stop-color="#07040a"/></radialGradient>
+<radialGradient id="gl" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="#d9a6ff" stop-opacity=".28"/><stop offset="1" stop-color="#d9a6ff" stop-opacity="0"/></radialGradient>
+<filter id="glow" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity=".035"/></pattern></defs>
+<rect width="320" height="200" fill="url(#bg)"/><rect width="320" height="200" fill="url(#grid)"/><rect width="320" height="200" fill="url(#gl)"/>
+<g filter="url(#glow)"><ellipse cx="160" cy="96" rx="56" ry="56" fill="none" stroke="#f4e9f2" stroke-width="2.2" opacity="1" /><path d="M118 60 C148 92 150 130 132 150" fill="none" stroke="#d9a6ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="1" /><path d="M132 150 C150 130 148 92 118 60 A56 56 0 0 1 216 96 A56 56 0 0 1 132 150Z" fill="#d9a6ff" opacity=".22"/><ellipse cx="150" cy="158" rx="70" ry="10" fill="#000" stroke="#8d7f9e" stroke-width="1.2" opacity="0.6" /><ellipse cx="186" cy="76" rx="10" ry="7" fill="#fff" stroke="#fff" stroke-width="1.4" opacity="1" /></g></svg>

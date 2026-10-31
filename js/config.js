@@ -3,7 +3,7 @@
 // can be tuned WITHOUT rewriting the app (spec §16). When a backend exists, the
 // same table should be served/validated by the server.
 
-export const APP_VERSION = '0.1.0-phase1';
+export const APP_VERSION = '0.2.0-phase2';
 
 // ---- XP curve -------------------------------------------------------------
 // XP needed to go from level L to L+1 = BASE + STEP * (L - 1)
@@ -99,4 +99,4 @@ export const ACHIEVEMENTS = [
   { id: 'multiplayer-debut', title: 'Not Alone', desc: 'Finish an online match.', cat: 'Multiplayer', stat: 'onlineMatches', goal: 1, xp: 100, phase: 9 },
 ];
 
-export const CURRENT_PHASE = 1;
+export const CURRENT_PHASE = 2;

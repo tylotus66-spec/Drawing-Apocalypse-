@@ -2,7 +2,7 @@
 
 **DRAW. LEARN. EVOLVE. SURVIVE.**
 
-A mobile web app (installable PWA) for iPhone and Android. This is the **Phase 1** build: app foundation, the five-section navigation, the visual identity, HOME, the player profile, SETTINGS, the unified progression system, and **ORB: The Eternal Guide**.
+A mobile web app (installable PWA) for iPhone and Android. This is the **Phase 2** build: the Phase 1 foundation (five-tab navigation, visual identity, profile, unified progression, **ORB: The Eternal Guide**) plus the core screens: the DRAWING lesson library with a real video player, the SURVIVAL mode select, CREATE locked/unlocked, the VAULT collection and records, and drill-down SETTINGS.
 
 Live URL (after GitHub Pages is enabled): `https://tylotus66-spec.github.io/drawing-apocalypse/`
 
@@ -31,10 +31,34 @@ js/voice.js           ORB voice (Web Speech API) + subtitles
 js/audio.js           WebAudio buses (master/music/sfx/voice), synthesized UI sounds, ambient music, ORB hum
 js/guide.js           contextual ORB tips + "Ask ORB" scripted help topics
 js/fx.js              ember / ash particles
+js/player.js          lesson video player (HTML5 <video> + custom controls)
+js/gamepad.js         Gamepad API menu navigation (D-pad/stick, A, B, LB/RB)
 js/screens/*.js       home, drawing, survival, create, vault, settings, onboarding
 content/tutorials.json  drawing library manifest (loaded at runtime; CMS-ready)
+thumbs/               original SVG construction-sketch thumbnails, one per lesson
+videos/               lesson videos, posters and WebVTT captions (not cached by the service worker)
 sw.js                 offline service worker (bump VERSION on changes)
 ```
+
+## Adding lesson videos
+Lessons live in `content/tutorials.json` (schema 2). A lesson **without** a `video` field shows an honest "Video not uploaded yet" panel with its original reference sketch, and its written steps still work and count toward completion. To give a lesson a real video:
+
+1. Put the files in `videos/` (or host them anywhere that serves HTTPS with range requests: Bunny, Cloudflare R2/Stream MP4, S3, etc.). Use **MP4 (H.264 + AAC)** for iPhone and, optionally, **WebM (VP9)** as a second source.
+2. Add a WebVTT caption file (`videos/<id>.en.vtt`), and optionally a poster image.
+3. Edit the lesson in `tutorials.json`:
+```json
+"video": [ { "src": "videos/fire-wyvern.mp4", "type": "video/mp4" },
+           { "src": "videos/fire-wyvern.webm", "type": "video/webm" } ],
+"poster": "videos/fire-wyvern-poster.webp",
+"captions": [ { "src": "videos/fire-wyvern.en.vtt", "srclang": "en", "label": "English" } ],
+"stepTimes": [0, 40, 95, 150, 210, 300, 380, 450, 520, 600, 690, 780]
+```
+`stepTimes` is the start second of each step (same count as `steps`). It powers the previous/next-step buttons and makes the step panel follow the video. Hosted URLs work the same way: use the full `https://…` address in `src`.
+4. Commit and push. No app code changes are needed, and you don't need to bump anything for `videos/`. Note that `tutorials.json` is cached for offline use, so phones see the change on the *second* launch after the deploy. Bump `VERSION` in `sw.js` if you want it on the first launch.
+
+Lesson XP (`LESSON_XP` in `js/progression.js`): Beginner 40, Intermediate 60, Advanced 80, Expert 100. It's paid once per lesson (ledger id `lesson:<id>`), only after every step has been studied (4 seconds on a step, or the video playing through it).
+
+The only video in this build is on `sphere-of-light` (Realism · Beginner): a 50-second **demo animation** rendered in code (`da-tools/make_demo_video.py`), with captions. It is labeled "DEMO ANIMATION" in the app (`"videoKind": "demo-animation"`) and is not recorded tutorial footage; it exists to prove the player end to end.
 
 ## Tuning progression
 Everything is in `js/config.js`:
@@ -49,4 +73,4 @@ XP is never stored directly. It is the sum of an append-only **reward ledger** w
 Phase 1 stores the profile on the device (`localStorage`) through `LocalAdapter` in `js/store.js`. The app only talks to the `Store` API, so a server can be added later by implementing `RemoteAdapter` (auth plus get/set) without changing the screens. Cloud accounts, login, cross-device saves, multiplayer, matchmaking, leaderboards and push notifications **need a backend service** (for example Supabase, Firebase, or a custom Node or Go API with a realtime server). The server must validate progression from gameplay events rather than trusting XP values sent by the client.
 
 ## Licenses
-All code, graphics, icons and sounds are original (the sounds are synthesized in code). No third-party libraries are used in Phase 1. Phase 3 will add a 3D engine (for example three.js, MIT), vendored locally.
+All code, graphics, icons and sounds are original (the sounds are synthesized in code). No third-party libraries are used. The Rajdhani font (SIL Open Font License, `fonts/OFL-Rajdhani.txt`) is self-hosted. Lesson thumbnails are original SVG construction sketches generated in code; the logo art comes from Ty's design references. Phase 3 will add a 3D engine (for example three.js, MIT), vendored locally.

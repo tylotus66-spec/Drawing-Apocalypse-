@@ -1,30 +1,1522 @@
 {
-  "schema": 1,
-  "note": "Tutorial library manifest. The DRAWING screen loads this file at runtime, so lessons can be added or changed without rebuilding the app. In Phase 2 this will be served by a CMS / backend; `video` must point to a real hosted video (HLS/MP4) and `reference` to finished artwork.",
-  "tutorials": [
+ "schema": 2,
+ "note": "Tutorial library manifest (schema 2). Loaded at runtime: add or edit lessons here, or serve this file from a CMS later. A lesson without \"video\" shows an honest “video not uploaded yet” state. See README “Adding lesson videos”.",
+ "difficulties": [
+  "Beginner",
+  "Intermediate",
+  "Advanced",
+  "Expert"
+ ],
+ "tutorials": [
+  {
+   "id": "fire-wyvern",
+   "title": "FIRE WYVERN",
+   "category": "dragons",
+   "difficulty": "Intermediate",
+   "summary": "A two-legged dragon whose wings are its arms: build it from a gesture line and simple forms, then add wings, legs, spikes, scales, shading and a fire breath. Twelve steps; the reference shows the drawing at step 5 of 12.",
+   "video": null,
+   "poster": null,
+   "reference": "thumbs/fire-wyvern-step5.svg",
+   "captions": [],
+   "steps": [
     {
-      "id": "fire-wyvern",
-      "title": "FIRE WYVERN",
-      "category": "dragons",
-      "difficulty": "Intermediate",
-      "durationMinutes": null,
-      "video": null,
-      "reference": null,
-      "subtitles": null,
-      "steps": [
-        "Basic construction",
-        "Head and skull",
-        "Neck",
-        "Body structure",
-        "Wings",
-        "Arms and legs",
-        "Tail",
-        "Horns and spikes",
-        "Facial details",
-        "Scales",
-        "Shading",
-        "Fire effects and final details"
-      ]
+     "title": "Basic construction",
+     "text": "Gesture line from head to tail tip, then ovals for chest and hips."
+    },
+    {
+     "title": "Head and skull",
+     "text": "Wedge skull with a long, narrow snout."
+    },
+    {
+     "title": "Neck",
+     "text": "Connect head to chest with an S-curve; keep it thick where it meets the body."
+    },
+    {
+     "title": "Body structure",
+     "text": "Join chest and hip ovals; mark the spine on top."
+    },
+    {
+     "title": "Wings",
+     "text": "Wyvern wings ARE the arms: draw the arm bones first, then long finger bones fanning out."
+    },
+    {
+     "title": "Arms and legs",
+     "text": "Strong digitigrade legs with three forward toes."
+    },
+    {
+     "title": "Tail",
+     "text": "Taper the tail smoothly; let it counterbalance the head."
+    },
+    {
+     "title": "Horns and spikes",
+     "text": "Add a row of spikes down the spine, smallest at the tail."
+    },
+    {
+     "title": "Facial details",
+     "text": "Narrow eyes, heavy brow, smoke curling from the nostrils."
+    },
+    {
+     "title": "Scales",
+     "text": "Big plates on the belly, small scales on joints."
+    },
+    {
+     "title": "Shading",
+     "text": "Pick a light source; shade the underside and the inner wing."
+    },
+    {
+     "title": "Fire effects and final details",
+     "text": "Draw flame as flowing S-shapes leaving the mouth, brightest near the jaw."
     }
-  ]
+   ],
+   "thumbnail": "thumbs/fire-wyvern.svg",
+   "featured": true,
+   "referenceStep": 5
+  },
+  {
+   "id": "sphere-of-light",
+   "title": "SPHERE OF LIGHT",
+   "category": "realism",
+   "difficulty": "Beginner",
+   "summary": "Draw ORB’s basic form: a sphere lit from one side, with core shadow, cast shadow, blended values and a highlight. The video is a 50-second DEMO ANIMATION generated in code to test the player — not recorded tutorial footage.",
+   "video": [
+    {
+     "src": "videos/sphere-of-light.mp4",
+     "type": "video/mp4"
+    },
+    {
+     "src": "videos/sphere-of-light.webm",
+     "type": "video/webm"
+    }
+   ],
+   "poster": "videos/sphere-of-light-poster.webp",
+   "reference": null,
+   "captions": [
+    {
+     "src": "videos/sphere-of-light.en.vtt",
+     "srclang": "en",
+     "label": "English"
+    }
+   ],
+   "steps": [
+    {
+     "title": "Construction",
+     "text": "Draw a light circle with your whole arm, not your wrist. Add a faint horizontal and vertical center line so you can judge symmetry."
+    },
+    {
+     "title": "Light source & terminator",
+     "text": "Decide where the light comes from — here, top left. Draw the terminator: a curved line where light turns into shadow, wrapping around the form opposite the light."
+    },
+    {
+     "title": "Core & cast shadow",
+     "text": "Block in the core shadow as a crescent on the side away from the light. Add the cast shadow on the ground, darkest right under the sphere and softer as it moves away."
+    },
+    {
+     "title": "Blend the values",
+     "text": "Shade from light to dark in smooth, overlapping layers. Keep the darkest values just past the terminator, not at the very edge."
+    },
+    {
+     "title": "Highlight & reflected light",
+     "text": "Lift out a small highlight where the light hits directly. Lighten the shadow edge slightly to show light bouncing back from the ground. That keeps the sphere round."
+    }
+   ],
+   "stepTimes": [
+    0,
+    10,
+    20,
+    30,
+    42
+   ],
+   "videoDuration": "0:50",
+   "thumbnail": "thumbs/sphere-of-light.svg",
+   "videoKind": "demo-animation"
+  },
+  {
+   "id": "dragon-head-basics",
+   "title": "DRAGON HEAD BASICS",
+   "category": "dragons",
+   "difficulty": "Beginner",
+   "summary": "Build a dragon head from simple shapes you can reuse for any species.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Skull block",
+     "text": "Draw a circle for the cranium and a long box for the snout, angled slightly down."
+    },
+    {
+     "title": "Jaw line",
+     "text": "Hang the lower jaw under the snout as a narrower wedge that hinges just below the eye."
+    },
+    {
+     "title": "Brow & eye",
+     "text": "Place the eye where snout meets skull. Draw a heavy brow ridge over it for a fierce look."
+    },
+    {
+     "title": "Horns",
+     "text": "Sweep two horns back from the top of the skull, following the curve of the head."
+    },
+    {
+     "title": "Nostrils & teeth",
+     "text": "Add nostrils near the snout tip and a row of uneven teeth along the jaw line."
+    },
+    {
+     "title": "Scale pattern",
+     "text": "Suggest scales in a few areas only — the brow, the snout and the jaw — instead of everywhere."
+    },
+    {
+     "title": "Line weight",
+     "text": "Go over your final lines, pressing harder on shadow sides and under overlaps."
+    }
+   ],
+   "thumbnail": "thumbs/dragon-head-basics.svg"
+  },
+  {
+   "id": "shadow-dragon",
+   "title": "SHADOW DRAGON",
+   "category": "dragons",
+   "difficulty": "Advanced",
+   "summary": "A four-legged dragon wreathed in shadow energy, with dramatic lighting.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Pose",
+     "text": "Choose a low, stalking pose. Draw a gesture line and a ground plane."
+    },
+    {
+     "title": "Mass",
+     "text": "Block chest, ribcage and hips as overlapping boxes in perspective."
+    },
+    {
+     "title": "Limbs",
+     "text": "Front legs lion-like, back legs bent like a cat’s."
+    },
+    {
+     "title": "Wings",
+     "text": "Fold the wings half-open so they frame the head."
+    },
+    {
+     "title": "Head",
+     "text": "Angular skull, swept-back horns, glowing eye sockets."
+    },
+    {
+     "title": "Shadow wisps",
+     "text": "Let tendrils of darkness peel off the wing edges and tail."
+    },
+    {
+     "title": "Rim light",
+     "text": "Keep the body dark; outline the edges with a thin bright rim of light."
+    },
+    {
+     "title": "Final contrast",
+     "text": "Push blacks darker and add small sharp highlights on horns and claws."
+    }
+   ],
+   "thumbnail": "thumbs/shadow-dragon.svg"
+  },
+  {
+   "id": "zombie-dragon",
+   "title": "ZOMBIE DRAGON",
+   "category": "dragons",
+   "difficulty": "Expert",
+   "summary": "The final creature: charcoal scales, exposed bone, torn wings and crimson fire.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Silhouette",
+     "text": "Design a jagged, broken silhouette: torn wing membranes and a hunched spine."
+    },
+    {
+     "title": "Anatomy first",
+     "text": "Draw the full healthy skeleton lightly so the decay sits on real anatomy."
+    },
+    {
+     "title": "Exposed bone",
+     "text": "Open the ribs and one side of the jaw; draw bone with smooth, pale planes."
+    },
+    {
+     "title": "Charcoal scales",
+     "text": "Cover the rest in dark, cracked charcoal scales, larger on the back."
+    },
+    {
+     "title": "Torn wings",
+     "text": "Rip holes in the membranes; keep the finger bones intact."
+    },
+    {
+     "title": "Crimson fire",
+     "text": "Crimson flames leak from the ribs and mouth — brightest at the source."
+    },
+    {
+     "title": "Lighting",
+     "text": "Let the fire light the bones from inside; everything else stays dark."
+    },
+    {
+     "title": "Atmosphere",
+     "text": "Finish with drifting embers and ash around the creature."
+    }
+   ],
+   "thumbnail": "thumbs/zombie-dragon.svg"
+  },
+  {
+   "id": "raptor-side-view",
+   "title": "RAPTOR SIDE VIEW",
+   "category": "dinosaurs",
+   "difficulty": "Beginner",
+   "summary": "A simple velociraptor profile that teaches dinosaur proportions.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Line of action",
+     "text": "One horizontal curve from head to tail; raptors balance like a seesaw over the hips."
+    },
+    {
+     "title": "Body ovals",
+     "text": "Small oval for the chest, smaller one for the hips."
+    },
+    {
+     "title": "Head",
+     "text": "Long low skull with a slight upward curve at the snout."
+    },
+    {
+     "title": "Legs",
+     "text": "Thick thigh, long shin, and the famous raised sickle claw."
+    },
+    {
+     "title": "Arms",
+     "text": "Short arms folded in, with feathers trailing from them."
+    },
+    {
+     "title": "Feathers",
+     "text": "Light feathers on the arms, back and tail tip."
+    },
+    {
+     "title": "Clean up",
+     "text": "Erase construction lines and strengthen the outline."
+    }
+   ],
+   "thumbnail": "thumbs/raptor-side-view.svg"
+  },
+  {
+   "id": "triceratops",
+   "title": "TRICERATOPS",
+   "category": "dinosaurs",
+   "difficulty": "Intermediate",
+   "summary": "Heavy body, frill and horns in three-quarter view.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Barrel body",
+     "text": "Draw a big barrel shape in perspective."
+    },
+    {
+     "title": "Legs",
+     "text": "Four pillar legs; front ones slightly shorter."
+    },
+    {
+     "title": "Head & frill",
+     "text": "A beak-like face with a wide shield-shaped frill behind it."
+    },
+    {
+     "title": "Horns",
+     "text": "Two long brow horns and one short nose horn."
+    },
+    {
+     "title": "Skin texture",
+     "text": "Pebbly skin in small circles, larger on the back."
+    },
+    {
+     "title": "Shading",
+     "text": "Shade under the belly and frill to show weight."
+    }
+   ],
+   "thumbnail": "thumbs/triceratops.svg"
+  },
+  {
+   "id": "nightmare-rex",
+   "title": "NIGHTMARE REX",
+   "category": "dinosaurs",
+   "difficulty": "Advanced",
+   "summary": "The Shadow-element tyrant, drawn with dark smoky lighting.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Pose",
+     "text": "A forward-leaning stride, head low and tail high for balance."
+    },
+    {
+     "title": "Skull",
+     "text": "Massive skull with deep eye sockets."
+    },
+    {
+     "title": "Neck & torso",
+     "text": "Thick muscular neck flowing into a deep chest."
+    },
+    {
+     "title": "Legs",
+     "text": "Powerful thighs and three-toed feet gripping the ground."
+    },
+    {
+     "title": "Shadow element",
+     "text": "Shadow smoke pours from its back and tail — darkness with substance."
+    },
+    {
+     "title": "Scales",
+     "text": "Dark, overlapping scales; ridges along the spine."
+    },
+    {
+     "title": "Lighting",
+     "text": "Keep it mostly in shadow, lit only from a low pink glow below."
+    },
+    {
+     "title": "Finish",
+     "text": "Add drifting shadow particles and a heavy cast shadow."
+    }
+   ],
+   "thumbnail": "thumbs/nightmare-rex.svg"
+  },
+  {
+   "id": "spinosaurus-river",
+   "title": "SPINOSAURUS IN THE RIVER",
+   "category": "dinosaurs",
+   "difficulty": "Expert",
+   "summary": "A full scene: a spinosaurus wading through a ruined, flooded street.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Perspective grid",
+     "text": "Set a horizon line and two vanishing points for the street."
+    },
+    {
+     "title": "Ruins",
+     "text": "Block in broken buildings on both sides."
+    },
+    {
+     "title": "Water line",
+     "text": "Draw the water surface cutting across the scene."
+    },
+    {
+     "title": "Spinosaurus",
+     "text": "Long croc-like snout, tall sail on the back, half submerged."
+    },
+    {
+     "title": "Reflections",
+     "text": "Mirror the shapes in the water, broken by ripples."
+    },
+    {
+     "title": "Depth",
+     "text": "Lighter, less detailed values for distant buildings."
+    },
+    {
+     "title": "Final details",
+     "text": "Splashes, rain, and floating debris."
+    }
+   ],
+   "thumbnail": "thumbs/spinosaurus-river.svg"
+  },
+  {
+   "id": "anime-face-front",
+   "title": "ANIME FACE — FRONT VIEW",
+   "category": "anime",
+   "difficulty": "Beginner",
+   "summary": "The classic anime face built from a circle and a jaw.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Circle",
+     "text": "Draw a circle for the cranium."
+    },
+    {
+     "title": "Jaw",
+     "text": "Add a soft V-shaped jaw under it."
+    },
+    {
+     "title": "Guidelines",
+     "text": "Vertical center line and an eye line halfway down the head."
+    },
+    {
+     "title": "Eyes",
+     "text": "Large eyes sitting on the eye line, one eye-width apart."
+    },
+    {
+     "title": "Nose & mouth",
+     "text": "A tiny nose mark and a small mouth line."
+    },
+    {
+     "title": "Hair",
+     "text": "Hair grows from above the forehead; draw it in big clumps."
+    }
+   ],
+   "thumbnail": "thumbs/anime-face-front.svg"
+  },
+  {
+   "id": "anime-action-pose",
+   "title": "ANIME ACTION POSE",
+   "category": "anime",
+   "difficulty": "Intermediate",
+   "summary": "A dynamic jumping pose with foreshortening.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Gesture",
+     "text": "One big curved line through the whole body."
+    },
+    {
+     "title": "Mannequin",
+     "text": "Simple boxes and cylinders for torso and limbs."
+    },
+    {
+     "title": "Foreshortening",
+     "text": "The fist closest to us is drawn much bigger."
+    },
+    {
+     "title": "Clothing",
+     "text": "Let clothes flow opposite to the movement."
+    },
+    {
+     "title": "Speed lines",
+     "text": "Add speed lines in the direction of motion."
+    },
+    {
+     "title": "Ink",
+     "text": "Thick outer lines, thin inner lines."
+    }
+   ],
+   "thumbnail": "thumbs/anime-action-pose.svg"
+  },
+  {
+   "id": "anime-hair-and-light",
+   "title": "ANIME HAIR & LIGHT",
+   "category": "anime",
+   "difficulty": "Advanced",
+   "summary": "Glossy anime hair, cel shading and rim light.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Hair mass",
+     "text": "Draw the hair as one big shape first."
+    },
+    {
+     "title": "Clumps",
+     "text": "Split it into pointed clumps that overlap."
+    },
+    {
+     "title": "Shine band",
+     "text": "Add a jagged highlight band across the top."
+    },
+    {
+     "title": "Cel shading",
+     "text": "Two flat tones: light and shadow, no blending."
+    },
+    {
+     "title": "Rim light",
+     "text": "A thin bright edge on the side facing the light."
+    }
+   ],
+   "thumbnail": "thumbs/anime-hair-and-light.svg"
+  },
+  {
+   "id": "anime-key-visual",
+   "title": "ANIME KEY VISUAL",
+   "category": "anime",
+   "difficulty": "Expert",
+   "summary": "A poster-quality illustration: character, background and effects.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Thumbnail",
+     "text": "Do three tiny thumbnail compositions and pick the strongest."
+    },
+    {
+     "title": "Character",
+     "text": "Full figure in a confident pose."
+    },
+    {
+     "title": "Background",
+     "text": "A ruined city skyline at dusk."
+    },
+    {
+     "title": "Effects",
+     "text": "Elemental energy swirling around the character."
+    },
+    {
+     "title": "Color plan",
+     "text": "Limit the palette to three main colors plus an accent."
+    },
+    {
+     "title": "Polish",
+     "text": "Glow, particles and final contrast."
+    }
+   ],
+   "thumbnail": "thumbs/anime-key-visual.svg"
+  },
+  {
+   "id": "realistic-eye",
+   "title": "REALISTIC EYE",
+   "category": "realism",
+   "difficulty": "Intermediate",
+   "summary": "A lifelike human eye with soft graphite shading.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Almond shape",
+     "text": "Draw the eye opening as a tilted almond."
+    },
+    {
+     "title": "Iris & pupil",
+     "text": "Circle for the iris, partly hidden by the upper lid."
+    },
+    {
+     "title": "Eyelids",
+     "text": "Add thickness to the lids; the lower lid is thinner."
+    },
+    {
+     "title": "Iris texture",
+     "text": "Radiating lines from the pupil outward."
+    },
+    {
+     "title": "Shading",
+     "text": "Darken the top of the eyeball where the lid casts shadow."
+    },
+    {
+     "title": "Lashes",
+     "text": "Curved lashes growing in clumps, not single lines."
+    },
+    {
+     "title": "Highlight",
+     "text": "Leave one bright reflection overlapping pupil and iris."
+    }
+   ],
+   "thumbnail": "thumbs/realistic-eye.svg"
+  },
+  {
+   "id": "ruined-street-perspective",
+   "title": "RUINED STREET PERSPECTIVE",
+   "category": "realism",
+   "difficulty": "Advanced",
+   "summary": "Two-point perspective applied to a destroyed city street.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Horizon",
+     "text": "Set the horizon at eye level."
+    },
+    {
+     "title": "Vanishing points",
+     "text": "Two points far apart on the horizon."
+    },
+    {
+     "title": "Buildings",
+     "text": "Block in boxes that obey both points."
+    },
+    {
+     "title": "Destruction",
+     "text": "Break edges, collapse floors, add rubble at the base."
+    },
+    {
+     "title": "Values",
+     "text": "Three values: light, mid, dark."
+    },
+    {
+     "title": "Atmosphere",
+     "text": "Fade distant shapes into smoke."
+    }
+   ],
+   "thumbnail": "thumbs/ruined-street-perspective.svg"
+  },
+  {
+   "id": "realistic-portrait",
+   "title": "REALISTIC PORTRAIT",
+   "category": "realism",
+   "difficulty": "Expert",
+   "summary": "A full graphite portrait using the Loomis method and value control.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Loomis head",
+     "text": "Ball and plane construction."
+    },
+    {
+     "title": "Features",
+     "text": "Place eyes, nose and mouth on measured lines."
+    },
+    {
+     "title": "Big shadows",
+     "text": "Block the largest shadow shapes first."
+    },
+    {
+     "title": "Midtones",
+     "text": "Build the midtones in layers."
+    },
+    {
+     "title": "Details",
+     "text": "Eyes and lips last, sharpest focus."
+    },
+    {
+     "title": "Edges",
+     "text": "Soften edges that turn away from the light."
+    }
+   ],
+   "thumbnail": "thumbs/realistic-portrait.svg"
+  },
+  {
+   "id": "cartoon-zombie",
+   "title": "CARTOON ZOMBIE",
+   "category": "cartoon",
+   "difficulty": "Beginner",
+   "summary": "A funny, simple zombie with exaggerated shapes.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Bean body",
+     "text": "Start with a bean shape."
+    },
+    {
+     "title": "Big head",
+     "text": "Make the head almost as big as the body."
+    },
+    {
+     "title": "Arms forward",
+     "text": "Classic zombie arms straight ahead."
+    },
+    {
+     "title": "Face",
+     "text": "Mismatched eyes and a crooked grin."
+    },
+    {
+     "title": "Clothes",
+     "text": "Torn shirt with patches."
+    },
+    {
+     "title": "Color",
+     "text": "Flat green skin, dark outline."
+    }
+   ],
+   "thumbnail": "thumbs/cartoon-zombie.svg"
+  },
+  {
+   "id": "cartoon-expressions",
+   "title": "CARTOON EXPRESSIONS",
+   "category": "cartoon",
+   "difficulty": "Intermediate",
+   "summary": "Six emotions on one character.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Base head",
+     "text": "Draw the same head six times."
+    },
+    {
+     "title": "Happy",
+     "text": "Eyes curve up, mouth wide."
+    },
+    {
+     "title": "Angry",
+     "text": "Brows down to the center."
+    },
+    {
+     "title": "Scared",
+     "text": "Eyes huge, pupils tiny."
+    },
+    {
+     "title": "Sad",
+     "text": "Brows up in the middle, mouth down."
+    },
+    {
+     "title": "Surprised",
+     "text": "Mouth an O, eyebrows high."
+    }
+   ],
+   "thumbnail": "thumbs/cartoon-expressions.svg"
+  },
+  {
+   "id": "cartoon-character-sheet",
+   "title": "CARTOON CHARACTER SHEET",
+   "category": "cartoon",
+   "difficulty": "Advanced",
+   "summary": "Front, side and back views that stay consistent.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Height lines",
+     "text": "Horizontal lines for head, chest, hips and feet."
+    },
+    {
+     "title": "Front view",
+     "text": "Draw the character facing you."
+    },
+    {
+     "title": "Side view",
+     "text": "Line up every feature with the height lines."
+    },
+    {
+     "title": "Back view",
+     "text": "Mirror the front silhouette."
+    },
+    {
+     "title": "Color callouts",
+     "text": "Label the main colors."
+    }
+   ],
+   "thumbnail": "thumbs/cartoon-character-sheet.svg"
+  },
+  {
+   "id": "cartoon-comic-page",
+   "title": "CARTOON COMIC PAGE",
+   "category": "cartoon",
+   "difficulty": "Expert",
+   "summary": "A six-panel apocalypse comic page with lettering.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Script",
+     "text": "Write six short beats."
+    },
+    {
+     "title": "Panel layout",
+     "text": "Vary panel sizes for pacing."
+    },
+    {
+     "title": "Pencils",
+     "text": "Rough the action in each panel."
+    },
+    {
+     "title": "Lettering",
+     "text": "Speech balloons placed left to right."
+    },
+    {
+     "title": "Inks",
+     "text": "Clean confident lines."
+    },
+    {
+     "title": "Tones",
+     "text": "Flat greys to separate depth."
+    }
+   ],
+   "thumbnail": "thumbs/cartoon-comic-page.svg"
+  },
+  {
+   "id": "steampunk-gear-heart",
+   "title": "STEAMPUNK GEAR HEART",
+   "category": "steampunk",
+   "difficulty": "Beginner",
+   "summary": "A biological heart with small brass gears — the 92/8 rule in miniature.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Heart shape",
+     "text": "Draw an anatomical heart, not a symbol."
+    },
+    {
+     "title": "Vessels",
+     "text": "Add the major vessels at the top."
+    },
+    {
+     "title": "One gear",
+     "text": "Embed a single small gear where a valve would be."
+    },
+    {
+     "title": "Rivets",
+     "text": "A few rivets where metal meets tissue."
+    },
+    {
+     "title": "Shading",
+     "text": "Shade the heart soft and organic, the brass sharp and shiny."
+    }
+   ],
+   "thumbnail": "thumbs/steampunk-gear-heart.svg"
+  },
+  {
+   "id": "inferno-steampunk",
+   "title": "INFERNO — STEAMPUNK FIRE HUMAN",
+   "category": "steampunk",
+   "difficulty": "Intermediate",
+   "summary": "The official character INFERNO: human, fire element, biological steampunk, no armor.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Figure",
+     "text": "A confident human pose; no armor anywhere."
+    },
+    {
+     "title": "Clothing",
+     "text": "Leather, cloth and rolled sleeves."
+    },
+    {
+     "title": "Steampunk details",
+     "text": "Small brass details integrated into the body: a gauge on the forearm, a valve at the collarbone."
+    },
+    {
+     "title": "Fire element",
+     "text": "Flames curling from the hands."
+    },
+    {
+     "title": "Face",
+     "text": "Determined expression, soot on the skin."
+    },
+    {
+     "title": "Balance",
+     "text": "Check: about 92% biological, 8% technology."
+    }
+   ],
+   "thumbnail": "thumbs/inferno-steampunk.svg"
+  },
+  {
+   "id": "steampunk-airship",
+   "title": "STEAMPUNK AIRSHIP",
+   "category": "steampunk",
+   "difficulty": "Advanced",
+   "summary": "A brass-and-canvas airship over the ruined city.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Envelope",
+     "text": "A long ellipse in perspective."
+    },
+    {
+     "title": "Gondola",
+     "text": "A wooden hull hanging below."
+    },
+    {
+     "title": "Propellers",
+     "text": "Rear propellers and side fins."
+    },
+    {
+     "title": "Pipes & valves",
+     "text": "Pipes running from the engine."
+    },
+    {
+     "title": "Rigging",
+     "text": "Ropes connecting envelope and hull."
+    },
+    {
+     "title": "Smoke",
+     "text": "Steam trails behind."
+    }
+   ],
+   "thumbnail": "thumbs/steampunk-airship.svg"
+  },
+  {
+   "id": "clockwork-dragon-hybrid",
+   "title": "CLOCKWORK-ACCENT DRAGON",
+   "category": "steampunk",
+   "difficulty": "Expert",
+   "summary": "A living dragon with integrated clockwork accents — never a robot.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Living dragon",
+     "text": "Draw the full biological dragon first."
+    },
+    {
+     "title": "Accent points",
+     "text": "Choose 3–4 joints for brass accents."
+    },
+    {
+     "title": "Integration",
+     "text": "Let scales overlap the metal so it looks grown-in."
+    },
+    {
+     "title": "Materials",
+     "text": "Contrast soft scales with polished brass."
+    },
+    {
+     "title": "Rule check",
+     "text": "Stay near 92% biological, 8% technology. No mechanical body."
+    }
+   ],
+   "thumbnail": "thumbs/clockwork-dragon-hybrid.svg"
+  },
+  {
+   "id": "cyber-eye-implant",
+   "title": "CYBER EYE IMPLANT",
+   "category": "cyberpunk",
+   "difficulty": "Beginner",
+   "summary": "A human eye with a subtle integrated implant.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Eye",
+     "text": "Draw a realistic eye."
+    },
+    {
+     "title": "Implant ring",
+     "text": "A thin metal ring around the iris."
+    },
+    {
+     "title": "Circuit lines",
+     "text": "Faint circuit lines on the skin nearby."
+    },
+    {
+     "title": "Glow",
+     "text": "A soft pink glow from the implant."
+    }
+   ],
+   "thumbnail": "thumbs/cyber-eye-implant.svg"
+  },
+  {
+   "id": "wolf-man-cyber-joints",
+   "title": "WOLF MAN — CYBERNETIC JOINTS",
+   "category": "cyberpunk",
+   "difficulty": "Intermediate",
+   "summary": "The official WOLF MAN: blood element, cybernetic joints, no generic armor.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Werewolf anatomy",
+     "text": "Digitigrade legs, broad shoulders, long arms."
+    },
+    {
+     "title": "Fur",
+     "text": "Directional fur strokes following the muscles."
+    },
+    {
+     "title": "Cyber joints",
+     "text": "Metal joints only at the elbows, knees and shoulders."
+    },
+    {
+     "title": "Blood element",
+     "text": "Crimson energy flowing around the claws."
+    },
+    {
+     "title": "No armor",
+     "text": "Keep chest and limbs biological — no plates."
+    }
+   ],
+   "thumbnail": "thumbs/wolf-man-cyber-joints.svg"
+  },
+  {
+   "id": "neon-alley",
+   "title": "NEON ALLEY",
+   "category": "cyberpunk",
+   "difficulty": "Advanced",
+   "summary": "A rainy cyberpunk alley with pink neon signs.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Perspective",
+     "text": "One-point perspective down the alley."
+    },
+    {
+     "title": "Walls",
+     "text": "Pipes, vents and signs on both walls."
+    },
+    {
+     "title": "Neon",
+     "text": "Draw sign shapes, then a glow around them."
+    },
+    {
+     "title": "Rain",
+     "text": "Diagonal rain lines and puddles."
+    },
+    {
+     "title": "Reflections",
+     "text": "Neon reflected in the puddles."
+    }
+   ],
+   "thumbnail": "thumbs/neon-alley.svg"
+  },
+  {
+   "id": "cyber-street-samurai",
+   "title": "CYBER STREET SAMURAI",
+   "category": "cyberpunk",
+   "difficulty": "Expert",
+   "summary": "A full character illustration with integrated cyberware.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Pose",
+     "text": "Drawing a blade, weight on the back foot."
+    },
+    {
+     "title": "Anatomy",
+     "text": "Fully human body first."
+    },
+    {
+     "title": "Cyberware",
+     "text": "Integrated forearm and neck implants only."
+    },
+    {
+     "title": "Clothing",
+     "text": "Layered streetwear and a long coat."
+    },
+    {
+     "title": "Lighting",
+     "text": "Pink key light, purple fill."
+    },
+    {
+     "title": "Rule check",
+     "text": "Mostly biological — no robot body."
+    }
+   ],
+   "thumbnail": "thumbs/cyber-street-samurai.svg"
+  },
+  {
+   "id": "wolf-head",
+   "title": "WOLF HEAD",
+   "category": "animals",
+   "difficulty": "Beginner",
+   "summary": "A wolf head from simple shapes.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Circle & muzzle",
+     "text": "A circle for the head and a box for the muzzle."
+    },
+    {
+     "title": "Ears",
+     "text": "Two triangular ears."
+    },
+    {
+     "title": "Eyes",
+     "text": "Almond eyes angled up."
+    },
+    {
+     "title": "Fur",
+     "text": "Short strokes following the head shape."
+    }
+   ],
+   "thumbnail": "thumbs/wolf-head.svg"
+  },
+  {
+   "id": "running-horse",
+   "title": "RUNNING HORSE",
+   "category": "animals",
+   "difficulty": "Intermediate",
+   "summary": "Horse anatomy in a gallop.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Gesture",
+     "text": "A stretched curve through the body."
+    },
+    {
+     "title": "Body",
+     "text": "Chest circle, hip circle, connecting belly line."
+    },
+    {
+     "title": "Legs",
+     "text": "Mark joints first; gallop legs fold and extend."
+    },
+    {
+     "title": "Head & neck",
+     "text": "Long neck, wedge-shaped head."
+    },
+    {
+     "title": "Mane & tail",
+     "text": "Flowing back from the motion."
+    }
+   ],
+   "thumbnail": "thumbs/running-horse.svg"
+  },
+  {
+   "id": "wendigo",
+   "title": "WENDIGO",
+   "category": "animals",
+   "difficulty": "Advanced",
+   "summary": "The official WENDIGO: Ice element, preserving its established creature identity.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Elongated figure",
+     "text": "Very tall, thin body with long limbs."
+    },
+    {
+     "title": "Skull head",
+     "text": "Antlered animal skull."
+    },
+    {
+     "title": "Ribs",
+     "text": "Visible ribs under stretched skin."
+    },
+    {
+     "title": "Ice element",
+     "text": "Frost crawling up the legs, icy breath."
+    },
+    {
+     "title": "Mood",
+     "text": "Snowstorm background with icy whites and deep shadows."
+    }
+   ],
+   "thumbnail": "thumbs/wendigo.svg"
+  },
+  {
+   "id": "skinwalker",
+   "title": "SKINWALKER",
+   "category": "animals",
+   "difficulty": "Expert",
+   "summary": "The official SKINWALKER: Poison element, preserving its established identity.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Unsettling pose",
+     "text": "Crouched, limbs bent at wrong-looking angles."
+    },
+    {
+     "title": "Anatomy",
+     "text": "Mix of human and animal proportions."
+    },
+    {
+     "title": "Poison",
+     "text": "Toxic mist drifting from the mouth and hands."
+    },
+    {
+     "title": "Texture",
+     "text": "Patchy fur and skin."
+    },
+    {
+     "title": "Lighting",
+     "text": "Low sickly underlight."
+    }
+   ],
+   "thumbnail": "thumbs/skinwalker.svg"
+  },
+  {
+   "id": "apocalypse-motorbike",
+   "title": "APOCALYPSE MOTORBIKE",
+   "category": "vehicles",
+   "difficulty": "Beginner",
+   "summary": "A rugged motorbike from two circles.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Wheels",
+     "text": "Two equal circles."
+    },
+    {
+     "title": "Frame",
+     "text": "A triangle connecting them."
+    },
+    {
+     "title": "Engine",
+     "text": "A box in the center."
+    },
+    {
+     "title": "Tank & seat",
+     "text": "Curved tank, flat seat."
+    },
+    {
+     "title": "Wear",
+     "text": "Scratches, dents and tape."
+    }
+   ],
+   "thumbnail": "thumbs/apocalypse-motorbike.svg"
+  },
+  {
+   "id": "armored-truck",
+   "title": "RUINED ARMORED TRUCK",
+   "category": "vehicles",
+   "difficulty": "Intermediate",
+   "summary": "A truck in two-point perspective.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Box",
+     "text": "Draw a long box in two-point perspective."
+    },
+    {
+     "title": "Cab",
+     "text": "Cut the front into a cab shape."
+    },
+    {
+     "title": "Wheels",
+     "text": "Ellipses that follow perspective."
+    },
+    {
+     "title": "Damage",
+     "text": "Broken windows, bent panels."
+    },
+    {
+     "title": "Details",
+     "text": "Spare tires, jerrycans."
+    }
+   ],
+   "thumbnail": "thumbs/armored-truck.svg"
+  },
+  {
+   "id": "helicopter-crash",
+   "title": "HELICOPTER CRASH SITE",
+   "category": "vehicles",
+   "difficulty": "Advanced",
+   "summary": "A downed helicopter in rubble.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Fuselage",
+     "text": "Tilted capsule shape."
+    },
+    {
+     "title": "Rotor",
+     "text": "Bent rotor blades."
+    },
+    {
+     "title": "Rubble",
+     "text": "Concrete chunks around it."
+    },
+    {
+     "title": "Smoke",
+     "text": "Rising smoke columns."
+    },
+    {
+     "title": "Light",
+     "text": "Fire light from below."
+    }
+   ],
+   "thumbnail": "thumbs/helicopter-crash.svg"
+  },
+  {
+   "id": "convoy-scene",
+   "title": "CONVOY SCENE",
+   "category": "vehicles",
+   "difficulty": "Expert",
+   "summary": "Three vehicles moving through a burning city.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Composition",
+     "text": "A diagonal road leading the eye."
+    },
+    {
+     "title": "Vehicles",
+     "text": "Three vehicles getting smaller with distance."
+    },
+    {
+     "title": "Environment",
+     "text": "Buildings, fires, debris."
+    },
+    {
+     "title": "Motion",
+     "text": "Dust trails and motion blur."
+    },
+    {
+     "title": "Values",
+     "text": "Strong silhouette contrast."
+    }
+   ],
+   "thumbnail": "thumbs/convoy-scene.svg"
+  },
+  {
+   "id": "basic-zombie",
+   "title": "BASIC ZOMBIE",
+   "category": "monsters",
+   "difficulty": "Beginner",
+   "summary": "A shambling zombie.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Slouch",
+     "text": "Curved spine, head forward."
+    },
+    {
+     "title": "Uneven limbs",
+     "text": "One arm hanging, one reaching."
+    },
+    {
+     "title": "Face",
+     "text": "Sunken eyes, open jaw."
+    },
+    {
+     "title": "Clothes",
+     "text": "Ragged clothes."
+    }
+   ],
+   "thumbnail": "thumbs/basic-zombie.svg"
+  },
+  {
+   "id": "shadow-person",
+   "title": "SHADOW PERSON",
+   "category": "monsters",
+   "difficulty": "Intermediate",
+   "summary": "The official SHADOW PERSON: Void element, dark silhouette.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Silhouette",
+     "text": "A tall human silhouette, solid black."
+    },
+    {
+     "title": "Edges",
+     "text": "Edges that dissolve into nothing."
+    },
+    {
+     "title": "Void",
+     "text": "Space around it looks distorted, as if erased."
+    },
+    {
+     "title": "Contrast",
+     "text": "Light background so the silhouette reads."
+    }
+   ],
+   "thumbnail": "thumbs/shadow-person.svg"
+  },
+  {
+   "id": "mutant-brute",
+   "title": "MUTANT BRUTE",
+   "category": "monsters",
+   "difficulty": "Advanced",
+   "summary": "A huge mutated zombie with exaggerated muscles.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Mass",
+     "text": "Massive upper body, small head."
+    },
+    {
+     "title": "Muscles",
+     "text": "Overgrown muscles on one side only."
+    },
+    {
+     "title": "Growths",
+     "text": "Bone spurs breaking through the skin."
+    },
+    {
+     "title": "Lighting",
+     "text": "Strong top light."
+    }
+   ],
+   "thumbnail": "thumbs/mutant-brute.svg"
+  },
+  {
+   "id": "creature-design-sheet",
+   "title": "CREATURE DESIGN SHEET",
+   "category": "monsters",
+   "difficulty": "Expert",
+   "summary": "Design an original monster with turnarounds and details.",
+   "video": null,
+   "poster": null,
+   "reference": null,
+   "captions": [],
+   "steps": [
+    {
+     "title": "Silhouettes",
+     "text": "Ten small silhouettes; pick the best."
+    },
+    {
+     "title": "Front & side",
+     "text": "Turnaround views."
+    },
+    {
+     "title": "Details",
+     "text": "Close-ups of head, hands and texture."
+    },
+    {
+     "title": "Element",
+     "text": "Choose one of the 30 elements and show its effect."
+    },
+    {
+     "title": "Notes",
+     "text": "Write callouts for behavior and size."
+    }
+   ],
+   "thumbnail": "thumbs/creature-design-sheet.svg"
+  }
+ ]
 }
