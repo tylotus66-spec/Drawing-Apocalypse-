@@ -26,7 +26,8 @@ js/config.js          ★ progression config: XP curve, level unlock table, chal
 js/content.js         30 elements, species, drawing categories, ORB tips, help topics, lore
 js/store.js           data layer (storage adapter + account API + settings)
 js/progression.js     XP ledger, levels, unlocks, daily challenges, achievements, notifications
-js/orb.js             ORB renderer (WebGL shader + Canvas2D fallback)
+js/orb.js             ORB renderer (WebGL shader: glass sphere, galaxy, lightning, perimeter flames; lite path; Canvas2D fallback)
+js/screens/orbguide.js ORB guide screen (#/orb)
 js/voice.js           ORB voice (Web Speech API) + subtitles
 js/audio.js           WebAudio buses (master/music/sfx/voice), synthesized UI sounds, ambient music, ORB hum
 js/guide.js           contextual ORB tips + "Ask ORB" scripted help topics

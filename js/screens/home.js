@@ -67,10 +67,10 @@ export function render() {
 
   <section class="hero">
     <img class="logo-title" src="./img/logo-title.webp" alt="DRAWING APOCALYPSE" width="900" height="288" decoding="async">
-    <button class="orb-hit" data-act="orb-tap" aria-label="Tap ORB for guidance"><div class="orb-slot orb-slot-lg"></div></button>
+    <button class="orb-hit orb-hit-lg" data-act="go" data-to="orb" aria-label="Open ORB, the Eternal Guide"><div class="orb-slot orb-slot-lg"></div></button>
     <div class="tagline-home">DRAW. LEARN. EVOLVE. <span>SURVIVE.</span></div>
     <div class="orb-msg glass" id="orb-msg"><span class="eyebrow">ORB</span> ${esc(isNew ? `Welcome, ${p.username}. Complete today's challenges to earn experience. Tap me any time for guidance.` : greeting(p))}</div>
-    <div class="row gap center"><button class="btn ghost sm" data-act="orb-tap">Hear guidance</button><button class="btn ghost sm" data-act="ask">Ask ORB</button></div>
+    <div class="row gap center"><button class="btn ghost sm" data-act="orb-tap">Hear guidance</button><button class="btn ghost sm" data-act="go" data-to="orb">Talk to ORB</button><button class="btn ghost sm" data-act="ask">Ask ORB</button></div>
   </section>
 
   <section class="modes">

@@ -14,10 +14,11 @@ import * as Survival from './screens/survival.js';
 import * as Create from './screens/create.js';
 import * as Vault from './screens/vault.js';
 import * as Settings from './screens/settings.js';
+import * as OrbGuide from './screens/orbguide.js';
 import { startOnboarding } from './screens/onboarding.js';
 import { startGamepadNav } from './gamepad.js';
 
-const SCREENS = { home: Home, drawing: Drawing, survival: Survival, create: Create, vault: Vault, settings: Settings };
+const SCREENS = { home: Home, drawing: Drawing, survival: Survival, create: Create, vault: Vault, settings: Settings, orb: OrbGuide };
 const TABS = ['home', 'drawing', 'survival', 'create', 'vault'];
 let current = null, lastTab = 'home', embers = null, onboardingOpen = false;
 const $ = (s) => document.querySelector(s);

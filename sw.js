@@ -1,16 +1,16 @@
 // DRAWING APOCALYPSE service worker: caches the app shell so it opens offline.
 // Bump VERSION whenever any shell file changes so phones pick up the update.
-const VERSION = 'v0.2.0-orb1';
+const VERSION = 'v0.2.2';
 const CACHE = 'da-shell-' + VERSION;
 const SHELL = [
   './', './index.html', './manifest.json', './css/app.css',
   './js/main.js', './js/config.js', './js/content.js', './js/store.js', './js/progression.js',
   './js/audio.js', './js/orb.js', './js/voice.js', './js/guide.js', './js/fx.js', './js/ui.js',
   './js/screens/common.js', './js/screens/home.js', './js/screens/drawing.js', './js/screens/survival.js',
-  './js/screens/create.js', './js/screens/vault.js', './js/screens/settings.js', './js/screens/onboarding.js',
+  './js/screens/create.js', './js/screens/vault.js', './js/screens/orbguide.js', './js/screens/settings.js', './js/screens/onboarding.js',
   './content/tutorials.json',
   './js/player.js', './js/gamepad.js',
-  './img/logo-orb.webp', './img/logo-title.webp', './img/ruined-skyline.svg',
+  './img/logo-title.webp', './img/ruined-skyline.svg',
   // original lesson thumbnails (small SVGs) so the library looks right offline
   './thumbs/anime-action-pose.svg',
   './thumbs/anime-face-front.svg',

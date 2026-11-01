@@ -2,6 +2,23 @@
 
 Workflow (spec §24): BUILD → PLAY → IDENTIFY ONE PROBLEM → DIRECT A FIX → PLAY AGAIN → LOCK IT → NEXT SYSTEM.
 
+## v0.2.2 — ORB fidelity pass · sw.js v0.2.2 · headless-tested only
+- **Flames:** three layers of curling tongues (26/39/57 per ring) with translucent crimson bodies, bright hot-pink outlines and a Voronoi crackle-vein network. They surround the whole perimeter and are tallest on top. A thin hot-pink rim line is drawn where the flames meet the glass.
+- **Galaxy:** larger tilted disk with 2+4-arm tighter spirals, dust lanes, star-cloud grain, a peach bulge and a brighter white core. Purple dust clouds and denser stars (three layers).
+- **Lightning:** 6 bolts (3 in lite). Each is lit about 90% of its cycle, so several are visible in any frame. They are thicker and use 3-octave fractal jag with 3 forked branches each, in neon blue-violet. They start round the rim and cross the sphere, and thin out over the bright core.
+- **Specular:** Ty's `pow(…,380.)*2.4` hotspot kept. A sharp thin curved crescent reflection and a translucent pink glass lip are layered on top.
+- **Cost:** heavier than v0.2.1. Cheaper noise is used where possible, and the adaptive-resolution floor drops from 0.5 to 0.4. Measured with `da-tools/orbfps.py` (SwiftShader CPU, not representative of phone GPUs): full quality about 35–53 fps at 393 px after adapting; lite 60 fps.
+
+## v0.2.1 — visual correction pass (not Phase 3) · sw.js v0.2.1 · headless-tested only
+- **ORB rebuilt** (`js/orb.js`, one WebGL fragment shader, one canvas re-parented between screens): black-glass sphere; procedural tilted spiral galaxy with white core and hot-pink/magenta arms; star field; animated branching neon-blue lightning clipped inside the glass; curved specular arcs + hotspot; animated hot-pink flame tongues with veins and sparks around the **entire** perimeter (tallest on top). Blue/cyan is used only inside the ORB.
+  - Carries Ty's `orb1` tuning (commit 820e615) at equal or stronger values: flame pulse `*(1+.15*sin(t*2.3))` and speak swell, flame alpha `(… +.4*uSpeak)` with `col*1.6`, `alpha*1.1`; arms `pow(…,2.2)`; arm colour `mix((1,.05,.55),(1,.35,.8),clump)`; white core ×3.4; lightning ×1.35 with an inward mask; specular `pow(…,380)*2.4`.
+  - Performance: DPR capped at 2, canvas capped at 720 px (480 px lite). Lite path (reduced motion or Low graphics) drops extra star layer, flame veins and half the bolts, and runs at 30 fps. Adaptive resolution lowers the pixel count when frames run slow. Canvas2D fallback unchanged.
+- **Scaled everywhere**: large on the ORB intro (replaces the flattened logo-orb image; the logo lettering sits above the live ORB), large on HOME overlapping the logo, extra-large on the new **ORB guide** screen, scaled in onboarding steps, section headers and the Ask ORB sheet. The flame box never blocks taps.
+- **New ORB guide screen** (`#/orb`, design sheet screen 9): reached by tapping the HOME ORB or "Talk to ORB". Real guidance line, four real destinations (Survival, Drawing, Create, Vault), Hear guidance, Ask ORB. Story is not listed, because it is not in the build plan yet.
+- **CREATE** (sheet screen 6): the creator layout (species and element lists showing real unlocks, a plain outline silhouette, Appearance/Style/Element/Abilities/Preview toolbar, CREATE AVATAR) is shown **inactive**. Every control is disabled and labeled Phase 6. The level-5 seal and XP bar are unchanged.
+- Not changed: Drawing, Survival, Vault and Settings layouts (rechecked against the sheet).
+- Tests: `da-tools/v021test.py`, 78 checks (the 60 Phase 2 checks plus 18 new ones). Screens: `drawing-apocalypse-shots/v021-*`.
+
 ## Phase 2 — status: BUILT, headless-tested (Chromium), awaiting on-device test · sw.js v0.2.0
 Build order per Ty's FINAL master blueprint (design-ref/FINAL-BLUEPRINT-NOTES.md, 2026-10-31): P1 foundation · **P2 core screens** · P3 PLAYABLE SURVIVAL · P4 ORB · P5 learning system · P6 progression/creator · P7 other modes one at a time · P8 polish/testing.
 
