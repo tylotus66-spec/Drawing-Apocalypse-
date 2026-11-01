@@ -1,6 +1,6 @@
 // DRAWING APOCALYPSE service worker: caches the app shell so it opens offline.
 // Bump VERSION whenever any shell file changes so phones pick up the update.
-const VERSION = 'v0.2.0';
+const VERSION = 'v0.2.0-orb1';
 const CACHE = 'da-shell-' + VERSION;
 const SHELL = [
   './', './index.html', './manifest.json', './css/app.css',

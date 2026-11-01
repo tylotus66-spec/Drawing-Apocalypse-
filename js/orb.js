@@ -67,7 +67,7 @@ void main(){
   vec3 col=vec3(0.); float alpha=0.;
 
   // ---------- exterior flame halo (outside the glass only) ----------
-  float hs=mix(.09,.22,uSpeak)*(1.+.1*sin(t*2.3));
+  float hs=mix(.12,.28,uSpeak)*(1.+.15*sin(t*2.3));
   vec2 dir=p/max(d,1e-4);
   hs*=1.+.45*max(dir.y,0.);            // flames lean upward
   float e=(d-R)/hs;
@@ -82,8 +82,8 @@ void main(){
     f=clamp(f,0.,1.);
     vec3 hc=mix(vec3(.3,0.,.13),vec3(1.,.1,.5),smoothstep(.1,.8,f));
     hc=mix(hc,vec3(1.,.6,.85),pow(f,5.)*.5);
-    float ha=f*(.7+.3*uSpeak)*uBright;
-    col=hc*ha*1.25; alpha=ha;
+    float ha=f*(.85+.4*uSpeak)*uBright;
+    col=hc*ha*1.6; alpha=ha*1.1;
   }
   // subtle cosmic particles around the orb
   if(d>R&&d<R+.35){
@@ -125,15 +125,15 @@ void main(){
       vec2 rp=rot(t*.18)*dp;
       float ang=atan(rp.y,rp.x);
       float sp=cos(2.*ang-5.2*log(r+.035));
-      float arms=pow(.5+.5*sp,2.6);
+      float arms=pow(.5+.5*sp,2.2);
       float clump=fbm2(rp*7.);
       float dust=smoothstep(.35,.75,fbm2(rp*11.+4.));
       float disk=exp(-r*2.3)*smoothstep(.98,.6,r);
       float a=arms*disk*(.55+.9*clump)*(1.-.55*dust);
-      vec3 armC=mix(vec3(.85,.0,.5),vec3(1.,.28,.72),clump);
-      ic+=armC*a*2.1;
+      vec3 armC=mix(vec3(1.,.05,.55),vec3(1.,.35,.8),clump);
+      ic+=armC*a*2.8;
       ic+=vec3(1.,.55,.85)*exp(-r*7.)*.9;              // bulge
-      ic+=vec3(1.)*exp(-r*r*240.)*2.6;                 // bright white core
+      ic+=vec3(1.)*exp(-r*r*180.)*3.4;                 // brighter white core
       // star clusters along arms
       vec2 sg=rp*55.; float sh=h21(floor(sg));
       ic+=vec3(1.,.85,.95)*step(.93,sh)*smoothstep(.3,0.,length(fract(sg)-.5))*arms*disk*3.;
@@ -188,7 +188,7 @@ void main(){
     }
 
     // neon-blue lightning, masked so it never touches the glass
-    ic+=lightning(qi,t)*smoothstep(.96,.8,length(qi));
+    ic+=lightning(qi,t)*smoothstep(.94,.72,length(qi))*1.35;
 
     // glass: dark tint deepening toward the edge (no ring, smooth falloff)
     vec3 gc=ic*(.48+.52*pow(z,.6))*uBright;
@@ -198,7 +198,7 @@ void main(){
     // reflective curved highlights near the top
     vec3 L1=normalize(vec3(-.38,.62,.68));
     vec3 H=normalize(L1+vec3(0.,0.,1.));
-    float spec=pow(max(dot(n,normalize(vec3(-.36,.66,.66))),0.),420.)*1.8;
+    float spec=pow(max(dot(n,normalize(vec3(-.36,.66,.66))),0.),380.)*2.4;
     float capA=smoothstep(.78,.97,dot(n,normalize(vec3(-.1,.92,.38))));
     float capB=smoothstep(.80,.99,dot(n,normalize(vec3(-.08,.72,.69))));
     float cres=capA*(1.-capB)*.75;
