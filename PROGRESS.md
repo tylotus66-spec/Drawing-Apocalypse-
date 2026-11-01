@@ -2,6 +2,23 @@
 
 Workflow (spec §24): BUILD → PLAY → IDENTIFY ONE PROBLEM → DIRECT A FIX → PLAY AGAIN → LOCK IT → NEXT SYSTEM.
 
+## v0.2.3 — ORB matched to Ty's exact reference (design-ref/orb-exact.jpg) · sw.js v0.2.3 · headless-tested only
+- **Hybrid ORB.** `da-tools/make_orb_assets.py` derives texture layers from orb-exact.jpg into `img/orb/`:
+  - Sphere interior (galaxy + glass) as a square crop of the fitted circle (centre 744,600, r 456), 1024 and 512 px.
+  - The flame ring as RGBA with the background keyed out (magenta hue + saturation + value key, white filaments kept only inside plumes, only regions connected to the ring), 1024 and 512 px.
+  - A mask of the baked-in blue lightning (512).
+  - A flattened static still (512) for the no-WebGL fallback.
+  - One small asteroid inside the sphere was inpainted out. Rocks, space and nebula outside are not included.
+- **Animated in WebGL** (`js/orb.js`):
+  - The galaxy swirls slowly back and forth inside the glass. The swirl is zero at the rim, so the reference's glass reflections and thick rim stay fixed. The core breathes, and stars twinkle.
+  - The flame plumes flow outward (two-phase flow-map sampling) with noise billow and flicker, and swell when ORB speaks.
+  - The baked lightning flickers region by region, and 3 thin procedural bolts (1 in lite) strike sparsely on top.
+  - Ty's specular `pow(…,380.)*2.4` is kept as a subtle layer (×0.3) under the reference's own reflections.
+- **Layout.** The sphere is now 62% of the ORB box (was 50%). Slot sizes were scaled so the sphere stays the same size on every screen.
+- **Lite / reduced motion.** Lite uses the 512 layers, a single flow phase, 1 bolt and no twinkles. Reduced motion runs at 30 fps and 0.35x speed. Adaptive resolution is unchanged.
+- **Canvas2D fallback** draws the static still.
+- All ORB assets are precached by the service worker.
+
 ## v0.2.2 — ORB fidelity pass · sw.js v0.2.2 · headless-tested only
 - **Flames:** three layers of curling tongues (26/39/57 per ring) with translucent crimson bodies, bright hot-pink outlines and a Voronoi crackle-vein network. They surround the whole perimeter and are tallest on top. A thin hot-pink rim line is drawn where the flames meet the glass.
 - **Galaxy:** larger tilted disk with 2+4-arm tighter spirals, dust lanes, star-cloud grain, a peach bulge and a brighter white core. Purple dust clouds and denser stars (three layers).

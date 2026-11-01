@@ -1,6 +1,6 @@
 // DRAWING APOCALYPSE service worker: caches the app shell so it opens offline.
 // Bump VERSION whenever any shell file changes so phones pick up the update.
-const VERSION = 'v0.2.2';
+const VERSION = 'v0.2.3';
 const CACHE = 'da-shell-' + VERSION;
 const SHELL = [
   './', './index.html', './manifest.json', './css/app.css',
@@ -10,7 +10,10 @@ const SHELL = [
   './js/screens/create.js', './js/screens/vault.js', './js/screens/orbguide.js', './js/screens/settings.js', './js/screens/onboarding.js',
   './content/tutorials.json',
   './js/player.js', './js/gamepad.js',
-  './img/logo-title.webp', './img/ruined-skyline.svg',
+  './img/logo-title.webp',
+  // ORB layers derived from design-ref/orb-exact.jpg (da-tools/make_orb_assets.py)
+  './img/orb/orb-interior-1024.webp', './img/orb/orb-flames-1024.webp', './img/orb/orb-interior-512.webp', './img/orb/orb-flames-512.webp',
+  './img/orb/orb-bolts-512.webp', './img/orb/orb-static-512.webp', './img/ruined-skyline.svg',
   // original lesson thumbnails (small SVGs) so the library looks right offline
   './thumbs/anime-action-pose.svg',
   './thumbs/anime-face-front.svg',
